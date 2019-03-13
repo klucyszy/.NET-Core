@@ -20,20 +20,23 @@ namespace SolidPrinciples.SingleResponsibility
             Todo._id++;
             Id = Todo._id;
             Category = Category.Other;
-            Description = description;
+            Priority = Priority.Low;
+            Description = description ?? throw new ArgumentNullException("Description parameter must be entered");
         }
 
-        public Todo(Category category, string description)
+        public Todo(Category category, Priority priority, string description)
         {
             Todo._id++;
             Id = Todo._id;
             Category = category;
-            Description = description;
+            Priority = priority;
+            Description = description ?? throw new ArgumentNullException("Description parameter must be entered");
         }
 
         private static int _id = 0;
         public int Id { get; private set; }
         public Category Category { get; set; }
+        public Priority Priority { get; set; }
         public string Description { get; set; }
     }
 
@@ -43,5 +46,12 @@ namespace SolidPrinciples.SingleResponsibility
         Hobby, 
         Home,
         Other
+    }
+
+    public enum Priority
+    {
+        Low,
+        Medium,
+        Major
     }
 }
