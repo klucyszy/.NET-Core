@@ -1,4 +1,5 @@
-﻿using SolidPrinciples.OpenClosed;
+﻿using SolidPrinciples.LiskovSubstitution;
+using SolidPrinciples.OpenClosed;
 using SolidPrinciples.SingleResponsibility;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,18 @@ namespace SolidPrinciples
             var homeAndMajorItems = categoryAndPriorityFilter.Filter().ToList();
 
             #endregion
-        }
+
+            #region Liskov-Substitution-Principle
+
+            var rectangle1 = new Rectangle(3, 4);
+            var area1 = rectangle1.Area();
+            Console.WriteLine($"{rectangle1.ToString()} + Area: {area1}");
+
+            var rectangle2 = new Square(4);
+            var area2 = rectangle2.Area();
+            Console.WriteLine($"{rectangle2.ToString()} + Area: {area2}");
+
+            #endregion
+            }
     }
 }
